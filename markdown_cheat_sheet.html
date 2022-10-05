@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>markdown_cheat_sheet.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="1-how-to-use-markdown">1-How To Use Markdown</h1>
+<h1 id="contents">Contents</h1>
+<p><a href="#1-how-to-use-markdown">Headings</a><br>
+<a href="#2--how-to-use-block-text-use-this--symbol">Block text</a><br>
+<a href="#3--line-break-or-use-backspace">Line Break</a><br>
+<a href="#4--face-of-text">Face Of Text</a><br>
+<a href="#5-bullet-points">Bullet Points</a><br>
+<a href="#6-line-break-or-page-break">Line Break</a><br>
+<a href="#7-link-and-hyperlinks">Links &amp; Hyperlinks</a><br>
+<a href="#8-images-and-figures-with-links">Images</a><br>
+<a href="#9-adding-code-blocks">Adding Code Blocks</a><br>
+<a href="#10--adding-tabels">Adding Tabels</a></p>
+<h1 id="first-heading-normal-text">First Heading Normal Text</h1>
+<h2 id="normal-text">Normal Text:</h2>
+<p>This is the noramal Text</p>
+<h1 id="2--how-to-use-block-text-use-this--symbol">2- How To Use Block Text use this '&gt;' symbol</h1>
+<blockquote>
+<p>My Name is Hamza Abbasi</p>
+</blockquote>
+<blockquote>
+<p>I am recently graduated from iqra university</p>
+</blockquote>
+<h1 id="3--line-break-or-use-backspace">3- line break or use backspace ''</h1>
+<p>** My name is hamza abbasi **</p>
+<p>I am 23 years <em>old</em></p>
+<p>I join python ka chilla with baba
+aamar</p>
+<h1 id="4--face-of-text">4- Face of text</h1>
+<ul>
+<li>
+<p>BOLD use double   '**' for bold <strong>BOLD</strong></p>
+</li>
+<li>
+<p>ITALIC for itlaic use singel '*' <em>HAMZA</em></p>
+</li>
+<li>
+<p>BOLD AND ITALIC for both things we use triple '<em><strong>' *** My Name Is Hamza</strong></em></p>
+</li>
+</ul>
+<h3 id="or-you-can-use-these-symobol--underscore">Or you can use these symobol (_) underscore</h3>
+<p>For Bold you can use three ( _ )<br>
+_<strong>Hamza</strong><br>
+For Italic you can use singel ( _ )<br>
+<em>Abbasi</em></p>
+<h1 id="5-bullet-points">5-Bullet Points</h1>
+<ul>
+<li>Day 1</li>
+<li>Day 2
+<ul>
+<li>Day-2b (Select Tab for add to two Bullet points in One Heading)</li>
+</ul>
+</li>
+<li>Day 3</li>
+</ul>
+<blockquote>
+<p>Numbering Of Points</p>
+</blockquote>
+<ol>
+<li>First Point</li>
+<li>Second point</li>
+<li>Third Point
+<ol>
+<li>sub heading</li>
+</ol>
+</li>
+</ol>
+<h1 id="6-line-break-or-page-break">6-Line Break Or Page Break</h1>
+<p>We can easily break line or page break by using these symobols<br>
+We use Both symbols three time for line Break</p>
+<ol>
+<li>( --- )</li>
+</ol>
+<hr>
+<ol start="2">
+<li>( *** )</li>
+</ol>
+<hr>
+<ol start="3">
+<li>( ___ )</li>
+</ol>
+<hr>
+<h1 id="7-link-and-hyperlinks">7-Link And Hyperlinks</h1>
+<p>To add basic link put '&lt;&gt;' put the link in this symbol.
+<a href="https://www.linkedin.com/feed/">https://www.linkedin.com/feed/</a></p>
+<hr>
+<p>To Creat hyperlinks you can simply add your text between '[]' these brackets and add your link after these bracket and put the link '()' between these brackets.<br>
+<a href="https://iuisl.iqra.edu.pk/">Click here to vist iqra university website</a></p>
+<hr>
+<p>To set the key of your Link</p>
+<p>Iqra University website is <a href="https://iuisl.iqra.edu.pk/">here</a></p>
+<hr>
+<h1 id="8-images-and-figures-with-links">8-Images And Figures with Links</h1>
+<p>To Join Our Telegram Group please Scan Our  QR code:\</p>
+<ul>
+<li>To show image use ' ! ' this symbol</li>
+</ul>
+<p><img src="qr.png" alt="QR"></p>
+<h2 id="how-to-take-online-images-from-web"><em><strong>How To Take Online images from web</strong></em></h2>
+<p>Online picture:</p>
+<p><img src="https://www.google.com/search?q=daraz+pk&amp;sxsrf=ALiCzsYCZY6CqJWs40Pt_v-LWCMQwmso1g:1664891636428&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwiaqNDU3Mb6AhXJ_qQKHV4dDcEQ_AUoAXoECAEQAw&amp;biw=1539&amp;bih=698&amp;dpr=1.25#imgrc=Vrgwuej-pC8r0M" alt="daraz"></p>
+<h1 id="9-adding-code-blocks">9-Adding Code Blocks</h1>
+<p>To show a code in your text put ( <code>print() </code>) and write your line of code between these Back Ticks.</p>
+<p>If you write Block Of Code then use (  ``` ) three back ticks and write your block of code between these ticks.</p>
+<pre class="hljs"><code><div>a= &quot;My name Is Hamza&quot;
+Pritnt(a)
+</div></code></pre>
+<h1 id="10--adding-tabels">10- Adding tabels</h1>
+<ul>
+<li>For allign the column use ' : ' colon.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left">NAME</th>
+<th style="text-align:left">AGE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">28027</td>
+<td style="text-align:left">Hamza Abbasi</td>
+<td style="text-align:left">22</td>
+</tr>
+<tr>
+<td style="text-align:left">28085</td>
+<td style="text-align:left">M.Aqib</td>
+<td style="text-align:left">25</td>
+</tr>
+<tr>
+<td style="text-align:left">28028</td>
+<td style="text-align:left">M.Affan</td>
+<td style="text-align:left">23</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FoR allign the column use ':' colon.</li>
+</ul>
+<hr>
+<pre><code>  --- Thanks For Reading :) ---
+</code></pre>
+
+</body>
+</html>
